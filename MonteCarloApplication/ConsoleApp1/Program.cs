@@ -17,11 +17,17 @@ namespace ConsoleApp1
             JobEngine engine = new JobEngine();
             engine.StartEngine();
 
-            
-
             MonteCarloSimulationJob job2 = new MonteCarloSimulationJob();
             job2.Box = new SimulationBox();
             job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle() { Radius = 6});
+            job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle());
+            job2.Box.Objects.Add(new Circle());
+
             job2.ProgressEvent += Job1_ProgressEvent;
 
           

@@ -13,9 +13,19 @@ namespace MonteCarloCore
 
         public double CalculateEnergy()
         {
-            return 0;
+            double totalEnergy=0;
+            for (int i = 0; i < Objects.Count; i++)
+            {
+                for (int j = i + 1; j < Objects.Count; j++)
+                {
+                   double ene = Objects[i].CalculateInteractionEnergy(Objects[j]);
+                    totalEnergy += ene;
+                    
+                }
+            }
+            return totalEnergy;
         }
-
+        
         public SimulationObject GetRandomObject()
         {
            int index = JobEngine.Rng.Next(Objects.Count);
@@ -24,12 +34,20 @@ namespace MonteCarloCore
 
         public void AcceptAllMoves()
         {
-            
+            for (int i = 0; i < Objects.Count; i++)
+            {
+                Objects[i].PreviousX = Objects[i].X;
+                Objects[i].PreviousY = Objects[i].Y;
+            }
         }
 
         public void RejectAllMoves()
         {
-            
+            for (int i = 0; i < Objects.Count; i++)
+            {
+                Objects[i].X = Objects[i].PreviousX;
+                Objects[i].Y = Objects[i].PreviousY;
+            }
         }
     }
     

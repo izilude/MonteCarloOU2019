@@ -1,4 +1,5 @@
-﻿using SimulationEngineCore;
+﻿using System;
+using SimulationEngineCore;
 
 namespace MonteCarloCore.Jobs
 {
@@ -26,6 +27,7 @@ namespace MonteCarloCore.Jobs
                 {
                     Box.AcceptAllMoves();
                     currentEnergy = newEnergy;
+                    Console.WriteLine(currentEnergy);
                 }
                 else
                 {
@@ -37,7 +39,7 @@ namespace MonteCarloCore.Jobs
 
         protected virtual bool IsMoveAcceptable(double currentEnergy, double newEnergy)
         {
-            return newEnergy < currentEnergy;
+            return newEnergy <= currentEnergy;
         }
     }
 
