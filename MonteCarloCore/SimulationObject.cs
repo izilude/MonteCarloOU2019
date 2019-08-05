@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using SimulationEngineCore;
 
-namespace MonteCarloCore.Properties
+namespace MonteCarloCore
 {
     public class SimulationObject
     {
-        List<SimulationMove> moves = new List<SimulationMove>();
+        public List<SimulationMove> Moves = new List<SimulationMove>();
 
         public SimulationMove GetRandomMove()
         {
-            return null;
+            int index = JobEngine.Rng.Next(Moves.Count);
+            return Moves[index];
         }
     }
 }

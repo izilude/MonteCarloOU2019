@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace MonteCarloCore
 {
-    public class SimulationMove
+    public class Circle : SimulationObject
+
     {
-        public virtual void ApplyMove(SimulationBox box, SimulationObject mcobject)
+        public Circle()
         {
-            
+            Moves.Add(new TranslationMove());
         }
+
     }
 }

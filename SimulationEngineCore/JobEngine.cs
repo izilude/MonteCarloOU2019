@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SimulationEngineCore
 {
     public class JobEngine
     {
+        public static Random Rng = new Random();
+
         public int NumberOfThreads = 1;
 
         public Queue<Job> JobsToDo = new Queue<Job>();

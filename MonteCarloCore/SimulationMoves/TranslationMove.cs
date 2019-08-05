@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonteCarloCore
 {
-    public class SimulationMove
+    public class TranslationMove : SimulationMove
     {
-        public virtual void ApplyMove(SimulationBox box, SimulationObject mcobject)
-        {
-            
-        }
     }
 }

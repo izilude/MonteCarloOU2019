@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MonteCarloCore;
+using MonteCarloCore.Jobs;
 using SimulationEngineCore;
 
 namespace ConsoleApp1
@@ -15,13 +17,14 @@ namespace ConsoleApp1
             JobEngine engine = new JobEngine();
             engine.StartEngine();
 
-            TestJob job1 = new TestJob() { Iterations = 100 };
-            job1.ProgressEvent += Job1_ProgressEvent;
+            
 
-            TestJob job2 = new TestJob() { Iterations = 200 };
+            MonteCarloSimulationJob job2 = new MonteCarloSimulationJob();
+            job2.Box = new SimulationBox();
+            job2.Box.Objects.Add(new Circle());
             job2.ProgressEvent += Job1_ProgressEvent;
 
-            engine.JobsToDo.Enqueue(job1);
+          
             engine.JobsToDo.Enqueue(job2);
 
             while (true)

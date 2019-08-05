@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MonteCarloCore.Properties;
+using SimulationEngineCore;
 
 namespace MonteCarloCore
 {
     public class SimulationBox
     {
-        List<SimulationObject> objects = new List<SimulationObject>();
+        public List<SimulationObject> Objects = new List<SimulationObject>();
 
         public double CalculateEnergy()
         {
@@ -18,9 +18,19 @@ namespace MonteCarloCore
 
         public SimulationObject GetRandomObject()
         {
-            return null;
+           int index = JobEngine.Rng.Next(Objects.Count);
+            return Objects[index];
         }
-     
+
+        public void AcceptAllMoves()
+        {
+            
+        }
+
+        public void RejectAllMoves()
+        {
+            
+        }
     }
     
 }

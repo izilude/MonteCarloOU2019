@@ -1,12 +1,6 @@
 ﻿using SimulationEngineCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MonteCarloCore.Properties;
 
-namespace MonteCarloCore
+namespace MonteCarloCore.Jobs
 {
     public class MonteCarloSimulationJob : Job
     {
@@ -26,17 +20,19 @@ namespace MonteCarloCore
                     SimulationMove move = mcObject.GetRandomMove();
                     move.ApplyMove(Box, mcObject);
                 }
+
+                double newEnergy = Box.CalculateEnergy();
+                if (IsMoveAcceptable(currentEnergy, newEnergy))
+                {
+                    Box.AcceptAllMoves();
+                    currentEnergy = newEnergy;
+                }
+                else
+                {
+                    Box.RejectAllMoves();
+                }
             }
-            double newEnergy = Box.CalculateEnergy();
-            if (IsMoveAcceptable(currentEnergy, newEnergy))
-            {
-                //Box.AcceptAllMoves();
-                currentEnergy = newEnergy;
-            }
-            else
-            {
-                
-            }
+            
         }
 
         protected virtual bool IsMoveAcceptable(double currentEnergy, double newEnergy)
