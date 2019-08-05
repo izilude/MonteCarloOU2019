@@ -16,7 +16,7 @@ namespace ConsoleApp1
             engine.StartEngine();
 
             TestJob job1 = new TestJob() { Iterations = 100 };
-            job1.ProgressEvent += Job1_ProgressEvent; ;
+            job1.ProgressEvent += Job1_ProgressEvent;
 
             TestJob job2 = new TestJob() { Iterations = 200 };
             job2.ProgressEvent += Job1_ProgressEvent;
