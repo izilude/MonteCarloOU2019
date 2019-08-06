@@ -23,8 +23,6 @@ namespace MonteCarloCore
 
         protected HardWall(Position myPosition) : base(myPosition)
         {
-
         }
-        public Position BoxPosition;
     }
 }
