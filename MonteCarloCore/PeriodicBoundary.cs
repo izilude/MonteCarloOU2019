@@ -33,6 +33,8 @@ namespace MonteCarloCore
             {
                 mcObject.X += box.Width;
             }
+
+            return true;
         }
     }
 }
