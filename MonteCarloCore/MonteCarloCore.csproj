@@ -52,6 +52,7 @@
     <Compile Include="SimulationBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulationMoves\TranslationMove.cs" />
+    <Compile Include="SimulationObjects\CircleLennardJones.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimulationEngineCore\SimulationEngineCore.csproj">
