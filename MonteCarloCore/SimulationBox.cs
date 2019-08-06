@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using SimulationEngineCore;
 
 namespace MonteCarloCore
+
+    public enum position { Top, Bottom, Left, Right}
 {
     public enum Position { Top, Bottom, Left, Right}
 
@@ -26,7 +28,7 @@ namespace MonteCarloCore
         {
             if (mcObject.Y > Height)
             {
-                Bottom.CheckBoundaryCondition(this, mcObject);
+               Bottom.CheckBoundaryCondition(this, mcObject);
             }
             else if (mcObject.Y < 0)
             {
