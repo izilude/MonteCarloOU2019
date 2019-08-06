@@ -8,6 +8,8 @@ using SimulationEngineCore;
 
 namespace MonteCarloCore
 {
+    public enum Position { Top, Bottom, Left, Right}
+
     public class SimulationBox
     {
         public double Width = 100;
@@ -30,7 +32,8 @@ namespace MonteCarloCore
             {
                 Top.CheckBoundaryCondition(this, mcObject);
             }
-            else if (mcObject.X > Width)
+
+            if (mcObject.X > Width)
             {
                 Right.CheckBoundaryCondition(this, mcObject);
             }
@@ -38,6 +41,7 @@ namespace MonteCarloCore
             {
                 Left.CheckBoundaryCondition(this, mcObject);
             }
+            return true;
         }
 
         public double CalculateEnergy()
