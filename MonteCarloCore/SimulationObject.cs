@@ -13,6 +13,11 @@ namespace MonteCarloCore
             return Moves[index];
         }
 
+        public virtual List<SimulationObject> GetSubObjects()
+        {
+            return new List<SimulationObject>();
+        }
+
         public abstract bool Hit(SimulationBox box, Position boxPosition);
 
         public abstract double CalculateInteractionEnergy(SimulationObject Obj);

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MonteCarloCore;
 using MonteCarloCore.Jobs;
+using MonteCarloCore.SimulationObjects;
 using SimulationEngineCore;
 
 namespace MonteCarloApplication
@@ -32,16 +33,8 @@ namespace MonteCarloApplication
             MonteCarloSimulationJob job1 = new MonteCarloSimulationJob();
 
             job1.Box = new SimulationBox();
-            job1.Box.Objects.Add(new Circle() {X = 10, Y=30, Radius = 5});
-            job1.Box.Objects.Add(new Circle() { X = 20, Y = 7, Radius = 2 });
-            job1.Box.Objects.Add(new Circle() { X = 80, Y = 30, Radius = 10 });
-            job1.Box.Objects.Add(new Circle() { X = 50, Y = 50, Radius = 25 });
-            job1.Box.Objects.Add(new Circle() { X = 50, Y = 50, Radius = 1 });
+            job1.Box.Objects.Add(new Polymer(5));
 
-            for (int i = 0; i < 100; i++)
-            {
-                job1.Box.Objects.Add(new Circle() { X = 50, Y = 50, Radius = 1 });
-            }
 
             job1.Box.Boundaries.Add(new HardWall(Position.Left));
             job1.Box.Boundaries.Add(new HardWall(Position.Right));

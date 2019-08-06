@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonteCarloCore.SimulationObjects;
+using System;
 
 namespace MonteCarloCore
 {
@@ -44,6 +45,10 @@ namespace MonteCarloCore
                     return 0;
                 }
                 else return 10000;
+            }
+            if(Obj is Polymer poly)
+            {
+                return 0;
             }
 
             throw new Exception("I don't know how to deal with this!!!");
