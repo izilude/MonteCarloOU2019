@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using SimulationEngineCore;
 
 namespace MonteCarloCore
-
-    public enum position { Top, Bottom, Left, Right}
 {
     public enum Position { Top, Bottom, Left, Right}
 
