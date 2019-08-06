@@ -21,7 +21,7 @@ namespace MonteCarloCore
             return true;
         }
 
-        protected HardWall(Position myPosition) : base(myPosition)
+        public HardWall(Position myPosition) : base(myPosition)
         {
         }
     }
