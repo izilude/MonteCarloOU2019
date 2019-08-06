@@ -20,6 +20,7 @@ namespace MonteCarloCore.Jobs
                     SimulationObject mcObject = Box.GetRandomObject();
                     SimulationMove move = mcObject.GetRandomMove();
                     move.ApplyMove(Box, mcObject);
+                    Box.CheckBoundaryConditions(mcObject);
                 }
 
                 double newEnergy = Box.CalculateEnergy();

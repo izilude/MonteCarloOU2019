@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boundary.cs" />
     <Compile Include="SimulationObjects\Circle.cs" />
     <Compile Include="Jobs\MonteCarloSimulationJob.cs" />
     <Compile Include="Jobs\MonteCarloSimulationJobAnnealed.cs" />

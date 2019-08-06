@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,35 @@ namespace MonteCarloCore
 {
     public class SimulationBox
     {
+        public double Width = 100;
+        public double Height = 100;
+
+        public Boundary Left;
+        public Boundary Right;
+        public Boundary Top;
+        public Boundary Bottom;
+
         public List<SimulationObject> Objects = new List<SimulationObject>();
+
+        public bool CheckBoundaryConditions(SimulationObject mcObject)
+        {
+            if (mcObject.Y > Height)
+            {
+                Bottom.CheckBoundaryCondition(this, mcObject);
+            }
+            else if (mcObject.Y < 0)
+            {
+                Top.CheckBoundaryCondition(this, mcObject);
+            }
+            else if (mcObject.X > Width)
+            {
+                Right.CheckBoundaryCondition(this, mcObject);
+            }
+            else if (mcObject.X < 0)
+            {
+                Left.CheckBoundaryCondition(this, mcObject);
+            }
+        }
 
         public double CalculateEnergy()
         {
