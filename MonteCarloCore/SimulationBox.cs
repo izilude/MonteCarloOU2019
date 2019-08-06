@@ -15,32 +15,17 @@ namespace MonteCarloCore
         public double Width = 100;
         public double Height = 100;
 
-        public Boundary Left;
-        public Boundary Right;
-        public Boundary Top;
-        public Boundary Bottom;
+        public List<Boundary> Boundaries = new List<Boundary>();
 
         public List<SimulationObject> Objects = new List<SimulationObject>();
 
         public bool CheckBoundaryConditions(SimulationObject mcObject)
         {
-            if (mcObject.Y > Height)
+            foreach (var boundary in Boundaries)
             {
-               Bottom.CheckBoundaryCondition(this, mcObject);
-            }
-            else if (mcObject.Y < 0)
-            {
-                Top.CheckBoundaryCondition(this, mcObject);
+                boundary.CheckBoundaryCondition(this, mcObject);
             }
 
-            if (mcObject.X > Width)
-            {
-                Right.CheckBoundaryCondition(this, mcObject);
-            }
-            else if (mcObject.X < 0)
-            {
-                Left.CheckBoundaryCondition(this, mcObject);
-            }
             return true;
         }
 

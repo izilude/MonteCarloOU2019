@@ -13,6 +13,26 @@ namespace MonteCarloCore
             Moves.Add(new TranslationMove() { Amplitude = 0.1 } );
         }
 
+        public override bool Hit(SimulationBox box, Position boxPosition)
+        {
+            if (boxPosition == Position.Top)
+            {
+                return Y < Radius;
+            }
+            else if (boxPosition == Position.Bottom)
+            {
+                return Y > box.Height - Radius;
+            }
+            else if (boxPosition == Position.Left)
+            {
+                return X < Radius;
+            }
+            else
+            {
+                return X > box.Height - Radius;
+            }
+        }
+
         public override double CalculateInteractionEnergy(SimulationObject Obj)
         {
             if(Obj is Circle circle ) 

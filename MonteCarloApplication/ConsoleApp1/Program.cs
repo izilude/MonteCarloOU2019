@@ -28,10 +28,10 @@ namespace ConsoleApp1
             job2.Box.Objects.Add(new Circle());
             job2.Box.Objects.Add(new Circle());
 
-            job2.Box.Left = new HardWall(Position.Left);
-            job2.Box.Right = new HardWall(Position.Right);
-            job2.Box.Top = new HardWall(Position.Top);
-            job2.Box.Bottom = new HardWall(Position.Bottom);
+            job2.Box.Boundaries.Add(new PeriodicBoundary(Position.Left));
+            job2.Box.Boundaries.Add(new PeriodicBoundary(Position.Right));
+            job2.Box.Boundaries.Add(new HardWall(Position.Top));
+            job2.Box.Boundaries.Add(new HardWall(Position.Bottom));
 
             job2.ProgressEvent += Job1_ProgressEvent;
 
