@@ -5,8 +5,7 @@ namespace MonteCarloCore.Jobs
 {
     public class MonteCarloSimulationJob : Job
     {
-   
-        public int Cycles = 1000;
+        public int Cycles = 100000;
         public int MovesPerCycle = 5;
         public SimulationBox Box;
 
@@ -28,12 +27,13 @@ namespace MonteCarloCore.Jobs
                 {
                     Box.AcceptAllMoves();
                     currentEnergy = newEnergy;
-                    Console.WriteLine(currentEnergy);
                 }
                 else
                 {
                     Box.RejectAllMoves();
                 }
+
+                OnProgress(100*i/Cycles);
             }
             
         }

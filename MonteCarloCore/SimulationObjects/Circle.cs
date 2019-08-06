@@ -9,8 +9,8 @@ namespace MonteCarloCore
         public Circle()
         {
             Moves.Add(new TranslationMove());
-            Moves.Add(new TranslationMove() { Amplitude = 10 } );
-            Moves.Add(new TranslationMove() { Amplitude = 0.1 } );
+            Moves.Add(new TranslationMove() {Amplitude = 10});
+            Moves.Add(new TranslationMove() {Amplitude = 50});
         }
 
         public override bool Hit(SimulationBox box, Position boxPosition)
@@ -29,7 +29,7 @@ namespace MonteCarloCore
             }
             else
             {
-                return X > box.Height - Radius;
+                return X > box.Width - Radius;
             }
         }
 
