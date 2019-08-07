@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using SimulationEngineCore;
@@ -29,14 +30,39 @@ namespace MonteCarloCore
             return true;
         }
 
+        private List<SimulationObject> GetAllObjects()
+        {
+            var allObjects = new List<SimulationObject>();
+            allObjects.AddRange(Objects);
+
+            foreach (var obj in Objects)
+            {
+                GetAllObjects(obj, allObjects);
+            }
+
+            return allObjects;
+        }
+
+        private void GetAllObjects(SimulationObject obj, List<SimulationObject> allObjects)
+        {
+            allObjects.AddRange(obj.GetSubObjects());
+
+            foreach (var sub in obj.GetSubObjects())
+            {
+                GetAllObjects(sub, allObjects);
+            }
+        }
+
         public double CalculateEnergy()
         {
+            List<SimulationObject> allObjects = GetAllObjects();
+
             double totalEnergy=0;
-            for (int i = 0; i < Objects.Count; i++)
+            for (int i = 0; i < allObjects.Count; i++)
             {
-                for (int j = i + 1; j < Objects.Count; j++)
+                for (int j = i + 1; j < allObjects.Count; j++)
                 {
-                   double ene = Objects[i].CalculateInteractionEnergy(Objects[j]);
+                   double ene = allObjects[i].CalculateInteractionEnergy(allObjects[j]);
                     totalEnergy += ene;
                     
                 }

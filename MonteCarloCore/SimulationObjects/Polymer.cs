@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MonteCarloCore.SimulationMoves;
 
 namespace MonteCarloCore.SimulationObjects
 {
@@ -26,7 +27,9 @@ namespace MonteCarloCore.SimulationObjects
             }
             X = Chains[0].X;
             Y = Chains[0].Y;
+
             Moves.Add(new TranslationMove());
+            Moves.Add(new RotationMove());
         }
 
         public override List<SimulationObject> GetSubObjects()
@@ -38,6 +41,7 @@ namespace MonteCarloCore.SimulationObjects
         public override double CalculateInteractionEnergy(SimulationObject Obj)
         {
             double totalEng = 0;
+
             foreach(var circI in Chains)
             {
                 foreach(var circJ in Chains)

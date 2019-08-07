@@ -32,8 +32,7 @@ namespace MonteCarloCore
 
         private void Move(SimulationObject mcobject, double dx, double dy)
         {
-            mcobject.X += dx;
-            mcobject.Y += dy;
+            mcobject.Translate(dx, dy);
         }
     }
 }

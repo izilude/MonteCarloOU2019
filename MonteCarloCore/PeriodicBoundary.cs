@@ -14,22 +14,22 @@ namespace MonteCarloCore
 
         public override bool CheckBoundaryCondition(SimulationBox box, SimulationObject mcObject)
         {
-            if (BoxPosition == Position.Bottom && mcObject.Y > box.Height)
+            if (BoxPosition == Position.Bottom && mcObject.Hit(box, Position.Bottom))
             {
                 mcObject.Translate(0, -box.Height);
             }
 
-            if (BoxPosition == Position.Top && mcObject.Y < 0)
+            if (BoxPosition == Position.Top && mcObject.Hit(box, Position.Top))
             {
                 mcObject.Translate(0, box.Height);
             }
 
-            if (BoxPosition == Position.Right && mcObject.X > box.Width)
+            if (BoxPosition == Position.Right && mcObject.Hit(box, Position.Right))
             {
                 mcObject.Translate(-box.Width, 0);
             }
 
-            if (BoxPosition == Position.Left && mcObject.X < 0)
+            if (BoxPosition == Position.Left && mcObject.Hit(box, Position.Left))
             {
                 mcObject.Translate(box.Width, 0);
             }

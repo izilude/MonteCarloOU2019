@@ -33,16 +33,23 @@ namespace MonteCarloApplication
             MonteCarloSimulationJob job1 = new MonteCarloSimulationJob();
 
             job1.Box = new SimulationBox();
+            job1.MovesPerCycle = 10;
 
-            var chain = new Polymer(5, 5);
-
+            var chain = new Polymer(15, 3);
             chain.Translate(10,10);
-
             job1.Box.Objects.Add(chain);
 
+            chain = new Polymer(10, 3);
+            chain.Translate(30, 30);
+            job1.Box.Objects.Add(chain);
 
-            job1.Box.Boundaries.Add(new HardWall(Position.Left));
-            job1.Box.Boundaries.Add(new HardWall(Position.Right));
+            for (int i = 0; i < 10; i++)
+            {
+                job1.Box.Objects.Add(new Circle());
+            }
+
+            job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Left));
+            job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Right));
             job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Top));
             job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Bottom));
 

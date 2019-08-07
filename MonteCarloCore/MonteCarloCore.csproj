@@ -44,6 +44,7 @@
     <Compile Include="Boundary.cs" />
     <Compile Include="PeriodicBoundary.cs" />
     <Compile Include="HardWall.cs" />
+    <Compile Include="SimulationMoves\RotationMove.cs" />
     <Compile Include="SimulationObjects\Circle.cs" />
     <Compile Include="Jobs\MonteCarloSimulationJob.cs" />
     <Compile Include="Jobs\MonteCarloSimulationJobAnnealed.cs" />
