@@ -10,17 +10,23 @@ namespace MonteCarloCore
     public class TranslationMove : SimulationMove
     {
         public double Amplitude = 1;
-        double dx = (2 * JobEngine.Rng.NextDouble() - 1) * Amplitude;
-        double dy = (2 * JobEngine.Rng.NextDouble() - 1) * Amplitude;
+
         public override void ApplyMove(SimulationBox box, SimulationObject mcobject)
         {
-            
-            Move(mcobject,dx,dy);
+            double dx = (2 * JobEngine.Rng.NextDouble() - 1) * Amplitude;
+            double dy = (2 * JobEngine.Rng.NextDouble() - 1) * Amplitude;
 
-            var subObjects = mcobject.GetSubObjects();
+            ApplyMove(mcobject, dx, dy);
+        }
+
+        private void ApplyMove(SimulationObject mcObject, double dx, double dy)
+        {
+            Move(mcObject, dx, dy);
+
+            var subObjects = mcObject.GetSubObjects();
             foreach (var sub in subObjects)
             {
-                ApplyMove(box, sub);
+                ApplyMove(sub, dx, dy);
             }
         }
 

@@ -6,19 +6,19 @@
         {
             if ( BoxPosition == Position.Top && mcObject.Hit(box, Position.Top))
             {
-                mcObject.Y = mcObject.PreviousY;
+                mcObject.ResetPosition(false, true);
             }
             if (BoxPosition == Position.Bottom && mcObject.Hit(box, Position.Bottom))
             {
-                mcObject.Y = mcObject.PreviousY;
+                mcObject.ResetPosition(false, true);
             }
             if (BoxPosition == Position.Left && mcObject.Hit(box, Position.Left))
             {
-                mcObject.X = mcObject.PreviousX;
+                mcObject.ResetPosition(true, false);
             }
             if (BoxPosition == Position.Right && mcObject.Hit(box, Position.Right))
             {
-                mcObject.X = mcObject.PreviousX;
+                mcObject.ResetPosition(true, false);
             }
             return true;
         }

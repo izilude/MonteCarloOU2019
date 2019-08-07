@@ -22,6 +22,42 @@ namespace MonteCarloCore
 
         public abstract double CalculateInteractionEnergy(SimulationObject Obj);
 
+        public void Translate(double dx, double dy)
+        {
+            X += dx;
+            Y += dy;
+
+            var subObjects = GetSubObjects();
+            foreach (var sub in subObjects)
+            {
+                sub.Translate(dx, dy);
+            }
+        }
+
+        public void SavePosition(bool saveX, bool saveY)
+        {
+            if (saveX) PreviousX = X;
+            if (saveY) PreviousY = Y;
+
+            var subObjects = GetSubObjects();
+            foreach (var sub in subObjects)
+            {
+                sub.SavePosition(saveX, saveY);
+            }
+        }
+
+        public void ResetPosition(bool resetX, bool resetY)
+        {
+            if (resetX) X = PreviousX;
+            if (resetY) Y = PreviousY;
+
+            var subObjects = GetSubObjects();
+            foreach (var sub in subObjects)
+            {
+                sub.ResetPosition(resetX, resetY);
+            }
+        }
+
         public double PreviousX;
         public double PreviousY;
 

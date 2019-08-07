@@ -33,13 +33,18 @@ namespace MonteCarloApplication
             MonteCarloSimulationJob job1 = new MonteCarloSimulationJob();
 
             job1.Box = new SimulationBox();
-            job1.Box.Objects.Add(new Polymer(5));
+
+            var chain = new Polymer(5, 5);
+
+            chain.Translate(10,10);
+
+            job1.Box.Objects.Add(chain);
 
 
             job1.Box.Boundaries.Add(new HardWall(Position.Left));
             job1.Box.Boundaries.Add(new HardWall(Position.Right));
-            job1.Box.Boundaries.Add(new HardWall(Position.Top));
-            job1.Box.Boundaries.Add(new HardWall(Position.Bottom));
+            job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Top));
+            job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Bottom));
 
             job1.ProgressEvent += Job1OnProgressEvent;
 

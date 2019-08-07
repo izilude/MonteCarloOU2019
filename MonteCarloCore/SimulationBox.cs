@@ -54,8 +54,7 @@ namespace MonteCarloCore
         {
             for (int i = 0; i < Objects.Count; i++)
             {
-                Objects[i].PreviousX = Objects[i].X;
-                Objects[i].PreviousY = Objects[i].Y;
+                Objects[i].SavePosition(true, true);
             }
         }
 
@@ -63,8 +62,7 @@ namespace MonteCarloCore
         {
             for (int i = 0; i < Objects.Count; i++)
             {
-                Objects[i].X = Objects[i].PreviousX;
-                Objects[i].Y = Objects[i].PreviousY;
+                Objects[i].ResetPosition(true, true);
             }
         }
     }

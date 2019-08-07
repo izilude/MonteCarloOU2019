@@ -16,22 +16,22 @@ namespace MonteCarloCore
         {
             if (BoxPosition == Position.Bottom && mcObject.Y > box.Height)
             {
-                mcObject.Y -= box.Height;
+                mcObject.Translate(0, -box.Height);
             }
 
             if (BoxPosition == Position.Top && mcObject.Y < 0)
             {
-                mcObject.Y += box.Height;
+                mcObject.Translate(0, box.Height);
             }
 
             if (BoxPosition == Position.Right && mcObject.X > box.Width)
             {
-                mcObject.X -= box.Width;
+                mcObject.Translate(-box.Width, 0);
             }
 
             if (BoxPosition == Position.Left && mcObject.X < 0)
             {
-                mcObject.X += box.Width;
+                mcObject.Translate(box.Width, 0);
             }
 
             return true;

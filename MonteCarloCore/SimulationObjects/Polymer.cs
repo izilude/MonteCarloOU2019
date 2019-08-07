@@ -8,14 +8,19 @@ namespace MonteCarloCore.SimulationObjects
 {
     public class Polymer : SimulationObject
     {
-
         public List<Circle> Chains = new List<Circle>();
 
-        public Polymer(int numChains)
+        public Polymer(List<Circle> chainLinks)
+        {
+            // Needs to be implemented
+            Chains = chainLinks;
+        }
+
+        public Polymer(int numChains, double radius)
         {
             for (int i=0; i < numChains; i++)
             {
-                Chains.Add(new Circle());
+                Chains.Add(new Circle() {Radius = radius});
                 Chains[i].X = i *2* Chains[i].Radius;
                 
             }
