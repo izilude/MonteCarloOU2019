@@ -30,7 +30,7 @@ namespace MonteCarloApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MonteCarloSimulationJob job1 = new MonteCarloSimulationJob();
+            MonteCarloSimulationJob job1 = new MonteCarloSimulationJobAnnealed();
 
             job1.Box = new SimulationBox();
             job1.MovesPerCycle = 10;
@@ -45,7 +45,7 @@ namespace MonteCarloApplication
 
             for (int i = 0; i < 10; i++)
             {
-                job1.Box.Objects.Add(new Circle());
+                job1.Box.Objects.Add(new CircleLennardJones());
             }
 
             job1.Box.Boundaries.Add(new PeriodicBoundary(Position.Left));
